@@ -19,4 +19,4 @@ jobs:
     
     - uses: actions/checkout@v3
     - name: Run Validate Encodings Python Script
-      run: python validate_encodings.py
+      run: python validate_encodings.py ./
