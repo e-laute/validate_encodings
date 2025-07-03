@@ -34,7 +34,7 @@ def main(directory):
     mei_files = find_mei_files(directory)
     if not mei_files:
         print("No .mei files found in the specified directory.")
-        return
+        return True
     for mei_file in mei_files:
         # read file into DOM and determine schema URL
         try:
