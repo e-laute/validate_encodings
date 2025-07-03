@@ -25,7 +25,7 @@ def find_mei_files(directory):
     mei_files = []
     for root, _, files in os.walk(directory):
         for file in files:
-            if file.endswith('.mei'):
+            if file.endswith('.mei') or file.endswith('.tei'):
                 mei_files.append(os.path.join(root, file))
     return mei_files
 def main(directory):
@@ -33,7 +33,7 @@ def main(directory):
     errors = []
     mei_files = find_mei_files(directory)
     if not mei_files:
-        print("No .mei files found in the specified directory.")
+        print("No .mei or .tei files found in the specified directory.")
         return
     for mei_file in mei_files:
         # read file into DOM and determine schema URL
