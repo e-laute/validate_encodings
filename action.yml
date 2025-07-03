@@ -1,4 +1,5 @@
 name: Validate Encodings
+description: This action validates all encodings in .mei and .tei-format against the given rng schema.
 
 on: 
   release:
