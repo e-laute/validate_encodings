@@ -39,13 +39,17 @@ def main(directory):
             # determine schema URL from the document
             # checking in <?xml-model?> declaration 
             schema_url = None
-            for pi in doc.getroottree().docinfo.PIs():
-                if pi.target == "xml-model":
-                    # Parse the pseudo-attributes
-                    attrs = pi.pseudo_attrib
-                    href = attrs.get("href")
-                    if href:
-                        schema_url = href
+            # Get the root element and look for xml-model processing instructions
+            root = doc.getroottree().getroot()
+            for pi in root.xpath('//processing-instruction("xml-model")'):
+                # Parse the pseudo-attributes from the processing instruction
+                pi_text = pi.text
+                if pi_text and 'href=' in pi_text:
+                    # Simple parsing of href attribute
+                    import re
+                    href_match = re.search(r'href=["\']([^"\']+)["\']', pi_text)
+                    if href_match:
+                        schema_url = href_match.group(1)
                         break
             if not schema_url:
                 print(f"No schema URL found in {mei_file}.")
