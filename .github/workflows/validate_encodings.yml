@@ -8,6 +8,12 @@ jobs:
   build: 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Run Validate Encodings Python Script
-        run: python validate_encodings.py
+
+    - name: install requirements
+      run: |
+        python -m pip install --upgrade pip
+        pip install lxml requests
+    
+    - uses: actions/checkout@v3
+    - name: Run Validate Encodings Python Script
+      run: python validate_encodings.py
