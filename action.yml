@@ -1,5 +1,5 @@
-name: Validate Encodings
-description: This action validates all encodings in .mei and .tei-format against the given rng schema.
+name: Validate Encodings and Parse Provenance
+description: This action validates all encodings in .mei and .tei-format against the given rng schema and parses provenance data from headers.
 
 on: 
   release:
@@ -11,4 +11,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run Validate Encodings Python Script
-        run: python validate_encodings.py
+        run: python validate_encodings.py .
+      - name: Install Python Dependencies
+        run: pip install -r requirements.txt
+      - name: Run Parse Provenance Python Script
+        run: python parse_provenance_batch.py .
+      - name: Upload to GraphDB (if configured)
+        run: |
+          if [ -f "graphdb.env" ]; then
+            python upload_to_graphdb.py .
+          else
+            echo "No graphdb.env file found, skipping GraphDB upload"
+          fi
+        continue-on-error: true

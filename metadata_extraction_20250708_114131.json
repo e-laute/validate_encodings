@@ -1,0 +1,344 @@
+{
+  "timestamp": "2025-07-08T11:41:31.058644",
+  "summary": {
+    "total_files": 1,
+    "successful_extractions": 1,
+    "failed_extractions": 0
+  },
+  "results": [
+    {
+      "file_path": "./judenkoenig_test.mei",
+      "success": true,
+      "metadata": {
+        "fileDesc": {
+          "titleStmt": {
+            "title": [
+              {
+                "@attributes": {
+                  "type": "main"
+                },
+                "titlePart": {
+                  "@attributes": {
+                    "type": "subordinate"
+                  },
+                  "abbr": {
+                    "@attributes": {
+                      "expan": "Common Music Notation"
+                    },
+                    "#text": "CMN"
+                  },
+                  "#text": "transcription in"
+                },
+                "#text": "Wo sol ich mich hin keren (Wo soll ich mich hin kehren)"
+              },
+              {
+                "@attributes": {
+                  "type": "original"
+                },
+                "#text": "Wo sol ich mich hin keren"
+              },
+              {
+                "@attributes": {
+                  "type": "normalized"
+                },
+                "#text": "Wo soll ich mich hin kehren"
+              }
+            ],
+            "respStmt": {
+              "persName": [
+                {
+                  "@attributes": {
+                    "role": "meiEditor",
+                    "auth.uri": "https://e-laute.info/data/projectstaff/16",
+                    "{http://www.w3.org/XML/1998/namespace}id": "projectstaff-16"
+                  },
+                  "foreName": "Henning",
+                  "famName": "Burghoff"
+                },
+                {
+                  "@attributes": {
+                    "role": "meiEditor",
+                    "auth.uri": "https://e-laute.info/data/projectstaff/11",
+                    "{http://www.w3.org/XML/1998/namespace}id": "projectstaff-11"
+                  },
+                  "foreName": "Olja",
+                  "famName": "Janjuš"
+                },
+                {
+                  "@attributes": {
+                    "role": "metadataContact",
+                    "auth.uri": "https://e-laute.info/data/projectstaff/10",
+                    "{http://www.w3.org/XML/1998/namespace}id": "projectstaff-10"
+                  },
+                  "foreName": "Ilias",
+                  "famName": "Kyriazis"
+                },
+                {
+                  "@attributes": {
+                    "role": "metadataContact",
+                    "auth.uri": "https://e-laute.info/data/projectstaff/15",
+                    "{http://www.w3.org/XML/1998/namespace}id": "projectstaff-15"
+                  },
+                  "foreName": "Julia",
+                  "famName": "Jaklin"
+                }
+              ],
+              "corpName": [
+                {
+                  "@attributes": {
+                    "role": "provider",
+                    "{http://www.w3.org/XML/1998/namespace}id": "elaute"
+                  },
+                  "ref": {
+                    "@attributes": {
+                      "target": "https://doi.org/10.55776/I6019 "
+                    },
+                    "abbr": "E-LAUTE",
+                    "expan": "Electronic Linked Annotated Unified Tablature Edition"
+                  }
+                },
+                {
+                  "@attributes": {
+                    "role": "funder",
+                    "{http://www.w3.org/XML/1998/namespace}id": "weave"
+                  },
+                  "ref": {
+                    "@attributes": {
+                      "target": "https://weave-research.net/"
+                    },
+                    "#text": "Weave"
+                  }
+                },
+                {
+                  "@attributes": {
+                    "role": "funder",
+                    "{http://www.w3.org/XML/1998/namespace}id": "fwf"
+                  },
+                  "ref": {
+                    "@attributes": {
+                      "target": "https://www.fwf.ac.at/"
+                    },
+                    "abbr": "FWF",
+                    "expan": "Austrian Science Fund"
+                  }
+                },
+                {
+                  "@attributes": {
+                    "role": "funder",
+                    "{http://www.w3.org/XML/1998/namespace}id": "dfg"
+                  },
+                  "ref": {
+                    "@attributes": {
+                      "target": "https://www.dfg.de/"
+                    },
+                    "abbr": "DFG",
+                    "expan": "German Research Foundation"
+                  }
+                },
+                {
+                  "@attributes": {
+                    "role": "funder",
+                    "{http://www.w3.org/XML/1998/namespace}id": "snf"
+                  },
+                  "ref": {
+                    "@attributes": {
+                      "target": "https://www.snf.ch/"
+                    },
+                    "abbr": "SNF",
+                    "expan": "Swiss National Science Foundation"
+                  }
+                }
+              ]
+            }
+          },
+          "editionStmt": {
+            "edition": {
+              "@attributes": {
+                "n": "1",
+                "resp": "#projectstaff-16"
+              },
+              "#text": "First diplomatic transcription in CMN. Lute\n\t\t\t\t\ttuned in A."
+            }
+          },
+          "pubStmt": {
+            "publisher": {
+              "corpName": {
+                "ref": {
+                  "@attributes": {
+                    "target": "http://www.onb.ac.at"
+                  },
+                  "#text": "Austrian National Library"
+                }
+              },
+              "address": {
+                "street": "Josefsplatz 1",
+                "postCode": "1015",
+                "settlement": "Vienna",
+                "country": "Austria"
+              }
+            },
+            "date": {
+              "@attributes": {
+                "isodate": "2025-06-10"
+              },
+              "#text": "2025-06-10"
+            },
+            "pubPlace": {
+              "ref": {
+                "@attributes": {
+                  "target": "http://www.geonames.org/2761369/"
+                },
+                "#text": "Vienna"
+              }
+            },
+            "distributor": {
+              "corpName": {
+                "ref": {
+                  "@attributes": {
+                    "target": "http://www.onb.ac.at"
+                  },
+                  "#text": "Austrian National Library"
+                }
+              },
+              "address": {
+                "street": "Josefsplatz 1",
+                "postCode": "1015",
+                "settlement": "Vienna",
+                "country": "Austria"
+              }
+            },
+            "availability": {
+              "useRestrict": {
+                "ref": {
+                  "@attributes": {
+                    "target": "https://creativecommons.org/licenses/by-sa/4.0/"
+                  },
+                  "#text": "Distributed\n\t\t\t\t\t\t\tunder the Creative Commons Attribution-ShareAlike 4.0 International\n\t\t\t\t\t\t\tlicense (CC BY-SA 4.0)"
+                }
+              }
+            },
+            "identifier": {
+              "@attributes": {
+                "type": "PID"
+              },
+              "#text": "o:lau.Jud_1523-2_n25"
+            }
+          },
+          "sourceDesc": {
+            "source": {
+              "biblStruct": {
+                "analytic": {
+                  "title": "Wo sol ich mich hin keren",
+                  "respStmt": {
+                    "persName": {
+                      "@attributes": {
+                        "role": "intabulator",
+                        "auth.uri": "https://e-laute.info/data/persons/78",
+                        "{http://www.w3.org/XML/1998/namespace}id": "persons-78"
+                      },
+                      "foreName": "Hans",
+                      "famName": "Judenkünig"
+                    }
+                  },
+                  "biblScope": "18v",
+                  "identifier": "Jud_1523-2_n10"
+                },
+                "monogr": {
+                  "title": "1.5.2.3. Ain schone kustliche vnerweisung",
+                  "identifier": "A-Wn MS47356-8°",
+                  "respStmt": {
+                    "persName": [
+                      {
+                        "@attributes": {
+                          "role": "publisher",
+                          "auth.uri": "https://e-laute.info/data/persons/79",
+                          "{http://www.w3.org/XML/1998/namespace}id": "persons-79"
+                        },
+                        "foreName": "Johannes",
+                        "famName": "Singriener"
+                      },
+                      {
+                        "@attributes": {
+                          "role": "author",
+                          "auth.uri": "https://e-laute.info/data/persons/78",
+                          "corresp": "#persons-78"
+                        },
+                        "foreName": "Hans",
+                        "famName": "Judenkünig"
+                      }
+                    ]
+                  },
+                  "imprint": {
+                    "pubPlace": {
+                      "geogName": {
+                        "@attributes": {
+                          "auth.uri": "https://e-laute.info/data/places/88",
+                          "{http://www.w3.org/XML/1998/namespace}id": "places-88"
+                        },
+                        "#text": "Wienn"
+                      }
+                    },
+                    "date": {
+                      "@attributes": {
+                        "isodate": "1523"
+                      },
+                      "#text": "1523"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "encodingDesc": {
+          "appInfo": {
+            "application": [
+              {
+                "@attributes": {
+                  "isodate": "2024-02-02",
+                  "version": "1.4.10"
+                },
+                "name": "luteconv"
+              },
+              {
+                "@attributes": {
+                  "{http://www.w3.org/XML/1998/namespace}id": "ax99h96",
+                  "enddate": "2024-04-29T16:58:25",
+                  "startdate": "2024-04-29T16:47:54",
+                  "version": "1.0.13"
+                },
+                "name": {
+                  "@attributes": {
+                    "{http://www.w3.org/XML/1998/namespace}id": "nx8rm931"
+                  },
+                  "#text": "mei-friend"
+                },
+                "p": {
+                  "@attributes": {
+                    "{http://www.w3.org/XML/1998/namespace}id": "pvdhl5v1"
+                  },
+                  "#text": "First edit by mei-friend 1.0.13, 22 April 2024."
+                }
+              }
+            ]
+          },
+          "editorialDecl": {
+            "p": {}
+          }
+        },
+        "revisionDesc": {
+          "change": {
+            "@attributes": {
+              "isodate": "2025-06-10",
+              "n": "1",
+              "resp": "#projectstaff-11"
+            },
+            "changeDesc": {
+              "p": "Manually updated following guidelines"
+            }
+          }
+        }
+      }
+    }
+  ]
+}
