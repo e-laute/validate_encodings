@@ -25,8 +25,112 @@ PROV_NS = {
     "dcterms": "http://purl.org/dc/terms/",
     "bibo": "http://purl.org/ontology/bibo/",
     "mei": "http://www.music-encoding.org/ns/mei#",
-    "xsd": "http://www.w3.org/2001/XMLSchema#"
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "loc": "http://id.loc.gov/vocabulary/relators/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "elaute": "https://e-laute.info/vocab#"
 }
+
+# Set of E-LAUTE specific roles that should use E-LAUTE namespace
+ELAUTE_ROLE_MAPPING = {
+    "meiEditor",  # editor
+    "fronimoEditor",  # editor
+    "musescoreEditor",  # editor
+    "metadataContact",  # contributor
+    "intabulator",  # arranger
+    "provider",  # publisher
+    "funder",  # funder
+    "publisher",  # publisher
+    "author",  # author
+    "composer",  # composer
+    "scribe",  # scribe
+    "collector",  # collector
+}
+
+def _get_role_uri(role: str) -> str:
+    """Convert a role to its proper URI, using E-LAUTE URIs for E-LAUTE specific roles."""
+    if role in ELAUTE_ROLE_MAPPING:
+        # E-LAUTE specific role - use E-LAUTE URI
+        return f"elaute:{role}"
+    elif role in [
+        "abridger", "actor", "adapter", "addressee", "analyst", "animator", "annotator",
+        "announcer", "appellant", "appellee", "applicant", "architect", "arranger",
+        "art copyist", "art director", "artist", "artistic director", "assignee",
+        "associated name", "attributed name", "auctioneer", "audio engineer",
+        "audio producer", "author", "author in quotations or text abstracts",
+        "author of afterword, colophon, etc.", "author of dialog",
+        "author of introduction, etc.", "autographer", "bibliographic antecedent",
+        "binder", "binding designer", "blurb writer", "book artist", "book designer",
+        "book producer", "bookjacket designer", "bookplate designer", "bookseller",
+        "braille embosser", "broadcaster", "calligrapher", "camera operator",
+        "cartographer", "caster", "casting director", "censor", "choreographer",
+        "cinematographer", "client", "collection registrar", "collector", "collotyper",
+        "colorist", "commentator", "commentator for written text", "compiler",
+        "complainant", "complainant-appellant", "complainant-appellee", "composer",
+        "compositor", "conceptor", "conductor", "conservator", "consultant",
+        "consultant to a project", "contestant", "contestant-appellant",
+        "contestant-appellee", "contestee", "contestee-appellant", "contestee-appellee",
+        "contractor", "contributor", "copyright claimant", "copyright holder",
+        "corrector", "correspondent", "costume designer", "court governed",
+        "court reporter", "cover designer", "creator", "curator", "dancer",
+        "data contributor", "data manager", "dedicatee", "dedicator", "defendant",
+        "defendant-appellant", "defendant-appellee", "degree committee member",
+        "degree granting institution", "degree supervisor", "delineator", "depicted",
+        "depositor", "designer", "director", "dissertant", "distribution place",
+        "distributor", "dj", "donor", "draftsman", "dubbing director", "dubious author",
+        "editor", "editor of compilation", "editor of moving image work",
+        "editorial director", "electrician", "electrotyper", "enacting jurisdiction",
+        "engineer", "engraver", "etcher", "event place", "expert", "facsimilist",
+        "field director", "film director", "film distributor", "film editor",
+        "film producer", "filmmaker", "first party", "forger", "former owner",
+        "founder", "funder", "game developer", "geographic information specialist",
+        "honoree", "host", "host institution", "illuminator", "illustrator",
+        "inker", "inscriber", "instrumentalist", "interviewee", "interviewer",
+        "inventor", "issuing body", "judge", "jurisdiction governed", "laboratory",
+        "laboratory director", "landscape architect", "lead", "lender", "letterer",
+        "libelant", "libelant-appellant", "libelant-appellee", "libelee",
+        "libelee-appellant", "libelee-appellee", "librettist", "licensee",
+        "licensor", "lighting designer", "lithographer", "lyricist", "makeup artist",
+        "manufacture place", "manufacturer", "marbler", "markup editor", "medium",
+        "metadata contact", "metal engraver", "minute taker", "mixing engineer",
+        "moderator", "monitor", "music copyist", "music programmer", "musical director",
+        "musician", "narrator", "news anchor", "onscreen participant",
+        "onscreen presenter", "opponent", "organizer", "originator", "other",
+        "owner", "panelist", "papermaker", "patent applicant", "patent holder",
+        "patron", "penciller", "performer", "permitting agency", "photographer",
+        "place of address", "plaintiff", "plaintiff-appellant", "plaintiff-appellee",
+        "platemaker", "praeses", "presenter", "printer", "printer of plates",
+        "printmaker", "process contact", "producer", "production company",
+        "production designer", "production manager", "production personnel",
+        "production place", "programmer", "project director", "proofreader",
+        "provider", "publication place", "publisher", "publisher director",
+        "puppeteer", "radio director", "radio producer", "rapporteur",
+        "recording engineer", "recordist", "redaktor", "remix artist", "renderer",
+        "reporter", "repository", "research team head", "research team member",
+        "researcher", "respondent", "respondent-appellant", "respondent-appellee",
+        "responsible party", "restager", "restorationist", "reviewer", "rubricator",
+        "scenarist", "scientific advisor", "screenwriter", "scribe", "sculptor",
+        "second party", "secretary", "seller", "set designer", "setting",
+        "signer", "singer", "software developer", "sound designer", "sound engineer",
+        "speaker", "special effects provider", "sponsor", "stage director",
+        "stage manager", "standards body", "stereotyper", "storyteller",
+        "supporting host", "surveyor", "teacher", "technical advisor",
+        "technical director", "television director", "television guest",
+        "television host", "television producer", "television writer",
+        "thesis advisor", "transcriber", "translator", "type designer",
+        "typographer", "university place", "videographer", "visual effects provider",
+        "vocalist", "voice actor", "witness", "wood engraver", "woodcutter",
+        "writer of accompanying material", "writer of added commentary",
+        "writer of added lyrics", "writer of added text", "writer of afterword",
+        "writer of film story", "writer of foreword", "writer of intertitles",
+        "writer of introduction", "writer of preface", "writer of supplementary textual content",
+        "writer of television story"
+    ]:
+        # Standard LOC relator - use directly
+        return f"loc:{role}"
+    else:
+        # Unknown role - use as literal (fallback)
+        return f"\"{role}\""
 
 def _strip_ns(tag: str) -> str:
     """Return local part of a tag name (remove namespace)."""
@@ -120,6 +224,37 @@ def generate_prov_ttl(mei_head: ET.Element, file_path: str) -> str:
     ttl_lines.append("@prefix bibo: <http://purl.org/ontology/bibo/> .")
     ttl_lines.append("@prefix mei: <http://www.music-encoding.org/ns/mei#> .")
     ttl_lines.append("@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .")
+    ttl_lines.append("@prefix loc: <http://id.loc.gov/vocabulary/relators/> .")
+    ttl_lines.append("@prefix skos: <http://www.w3.org/2004/02/skos/core#> .")
+    ttl_lines.append("@prefix elaute: <https://e-laute.info/vocab#> .")
+    ttl_lines.append("")
+    
+    # Define E-LAUTE specific roles as SKOS concepts
+    ttl_lines.append("# E-LAUTE specific roles as SKOS concepts")
+    ttl_lines.append("elaute:meiEditor a skos:Concept ;")
+    ttl_lines.append("    skos:broader loc:edt .")
+    ttl_lines.append("elaute:fronimoEditor a skos:Concept ;")
+    ttl_lines.append("    skos:broader loc:edt .")
+    ttl_lines.append("elaute:musescoreEditor a skos:Concept ;")
+    ttl_lines.append("    skos:broader loc:edt .")
+    ttl_lines.append("elaute:metadataContact a skos:Concept ;")
+    ttl_lines.append("    skos:broader loc:ctb .")
+    ttl_lines.append("elaute:intabulator a skos:Concept ;")
+    ttl_lines.append("    skos:broader loc:arr .")
+    ttl_lines.append("elaute:provider a skos:Concept ;")
+    ttl_lines.append("    skos:broader loc:pbl .")
+    ttl_lines.append("elaute:funder a skos:Concept ;")
+    ttl_lines.append("    skos:broader loc:fnd .")
+    ttl_lines.append("elaute:publisher a skos:Concept ;")
+    ttl_lines.append("    skos:broader loc:pbl .")
+    ttl_lines.append("elaute:author a skos:Concept ;")
+    ttl_lines.append("    skos:broader loc:aut .")
+    ttl_lines.append("elaute:composer a skos:Concept ;")
+    ttl_lines.append("    skos:broader loc:cmp .")
+    ttl_lines.append("elaute:scribe a skos:Concept ;")
+    ttl_lines.append("    skos:broader loc:scr .")
+    ttl_lines.append("elaute:collector a skos:Concept ;")
+    ttl_lines.append("    skos:broader loc:col .")
     ttl_lines.append("")
     
     # Define the MEI file entity
@@ -228,7 +363,8 @@ def _process_respstmt(resp_stmt: ET.Element, entities: dict, agents: dict) -> li
             
             # Link agent to target entity with role
             ttl_lines.append(f"<{target_entity}> dcterms:creator <{agent_uri}> .")
-            ttl_lines.append(f"<{agent_uri}> prov:hadRole \"{role}\" .")
+            role_uri = _get_role_uri(role)
+            ttl_lines.append(f"<{agent_uri}> prov:hadRole {role_uri} .")
     
     # Process corporate names
     corp_names = resp_stmt.findall("mei:corpName", MEI_NS)
@@ -252,7 +388,8 @@ def _process_respstmt(resp_stmt: ET.Element, entities: dict, agents: dict) -> li
             
             # Link organization to target entity
             ttl_lines.append(f"<{target_entity}> dcterms:contributor <{corp_uri}> .")
-            ttl_lines.append(f"<{corp_uri}> prov:hadRole \"{role}\" .")
+            role_uri = _get_role_uri(role)
+            ttl_lines.append(f"<{corp_uri}> prov:hadRole {role_uri} .")
     
     return ttl_lines
 

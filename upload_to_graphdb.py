@@ -120,10 +120,23 @@ class GraphDBUploader:
 def find_mei_files(directory):
     """Find all .mei and .tei files in the directory structure."""
     mei_files = []
-    for root, _, files in os.walk(directory):
-        for file in files:
-            if file.endswith('.mei') or file.endswith('.tei'):
-                mei_files.append(os.path.join(root, file))
+    directories_searched = set()
+    
+    print(f"🔍 Searching for MEI/TEI files in: {directory}")
+    print("   Scanning subdirectories recursively...")
+    
+    for root, dirs, files in os.walk(directory):
+        directories_searched.add(root)
+        
+        # Check if any MEI files are in this directory
+        mei_in_dir = [f for f in files if f.endswith('.mei') or f.endswith('.tei')]
+        if mei_in_dir:
+            print(f"   📁 Found {len(mei_in_dir)} MEI/TEI files in: {root}")
+            for file in mei_in_dir:
+                full_path = os.path.join(root, file)
+                mei_files.append(full_path)
+    
+    print(f"   ✅ Searched {len(directories_searched)} directories total")
     return mei_files
 
 def extract_prov_from_file(file_path):
@@ -179,8 +192,8 @@ def main():
     # Get initial repository stats
     print("\n📊 Getting repository statistics...")
     initial_stats = uploader.get_repository_stats()
-    if initial_stats:
-        print(f"   Initial statements: {initial_stats.get('statements', 'unknown')}")
+    if initial_stats is not None:
+        print(f"   Initial statements: {initial_stats}")
     
     # Process files
     if input_path.is_file():
@@ -195,12 +208,22 @@ def main():
             print("❌ No .mei or .tei files found in the specified directory.")
             sys.exit(1)
         
-        print(f"Found {len(mei_files)} MEI/TEI files to process...")
+        print(f"\n📋 Summary: Found {len(mei_files)} MEI/TEI files to process")
+        print("Files to be processed:")
+        for file in mei_files:
+            print(f"  - {file}")
+        print()
         results = []
-        for mei_file in mei_files:
-            print(f"  Processing: {mei_file}")
+        for i, mei_file in enumerate(mei_files, 1):
+            print(f"  [{i}/{len(mei_files)}] Processing: {mei_file}")
             result = extract_prov_from_file(mei_file)
             results.append(result)
+            
+            # Show progress
+            if result['success']:
+                print(f"     ✅ Extracted PROV-O data successfully")
+            else:
+                print(f"     ❌ Failed to extract: {result['error']}")
     
     # Upload results
     successful_uploads = 0
@@ -210,23 +233,24 @@ def main():
     print(f"\n🚀 Starting upload to GraphDB...")
     print("="*60)
     
-    for result in results:
+    for i, result in enumerate(results, 1):
         if result['success']:
+            print(f"\n[{i}/{len(results)}] Uploading: {result['file_path']}")
             # Upload to GraphDB without named graph context for now
             if uploader.upload_ttl_data(result['ttl_output']):
                 successful_uploads += 1
-                print(f"✅ Uploaded: {result['file_path']} (default graph)")
+                print(f"   ✅ Uploaded successfully (default graph)")
                 
                 # Count statements (rough estimate)
                 statement_count = result['ttl_output'].count('.')
                 total_statements += statement_count
-                print(f"   Statements: ~{statement_count}")
+                print(f"   📊 Statements: ~{statement_count}")
             else:
                 failed_uploads += 1
-                print(f"❌ Failed to upload: {result['file_path']}")
+                print(f"   ❌ Upload failed")
         else:
             failed_uploads += 1
-            print(f"❌ Failed to process: {result['file_path']} - {result['error']}")
+            print(f"\n[{i}/{len(results)}] ❌ Skipped: {result['file_path']} - {result['error']}")
     
     # Get final repository stats
     print(f"\n📊 Getting final repository statistics...")
@@ -241,9 +265,9 @@ def main():
     print(f"Failed uploads: {failed_uploads}")
     print(f"Total statements uploaded: ~{total_statements}")
     
-    if initial_stats and final_stats:
-        initial_stmts = initial_stats.get('statements', 0)
-        final_stmts = final_stats.get('statements', 0)
+    if initial_stats is not None and final_stats is not None:
+        initial_stmts = initial_stats
+        final_stmts = final_stats
         added_stmts = final_stmts - initial_stmts
         print(f"Repository statements before: {initial_stmts}")
         print(f"Repository statements after: {final_stmts}")
