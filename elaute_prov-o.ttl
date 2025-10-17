@@ -1,0 +1,89 @@
+# classes
+elaute:TypesettingSource a prov:Entity, frbr:Manifestation ;
+  dcterms:type <http://rdaregistry.info/termList/RDAContentType/1010> ; # notated music
+  rdfs:label "Typesetting Source" ;
+  rdfs:comment "The source from which a typesetting is derived, such as a scanned image or physical representation of notated music." .
+
+elaute:FronimoFile a prov:Entity ;
+  rdfs:label "Fronimo File" ;
+  rdfs:comment "A file containing the typesetting data for a Fronimo instance." .
+
+elaute:MEIFile a prov:Entity ;
+  rdfs:label "MEI File" ;
+  rdfs:comment "A file containing the Music Encoding Initiative (MEI) representation of a music manifestation." .
+
+elaute:Typesetting a prov:Activity ;
+  rdfs:label "Typesetting Activity" ;
+  rdfs:comment "An activity that involves typesetting a Fronimo file from a musical source." .
+
+elaute:FileConversion a prov:Activity ;
+  rdfs:label "File Conversion" ;
+  rdfs:comment "Converting data from one file format into another" .
+
+elaute:ConversionFT3ToMEI a elaute:FileConversion ;
+  rdfs:label "Conversion from Fronimo to MEI" ;
+  rdfs:comment "An activity that involves converting a Fronimo file to MEI format." 
+  # add also the file formats of pre- and post-conversion formats
+  .
+
+# continue at a later stage with the classes  
+
+## typesetting
+
+<typesettingSources/01> a elaute:TypesettingSource, elaute:PhysicalSource ; # alternatively, elaute:DigitalSource
+  bf:title "Typesetting Source 01" ;
+  rdfs:label "example1.jpg" . # in case it would be in digital form
+
+<typesettingActivities/01> a elaute:Typesetting  ;
+  prov:startedAtTime "2023-10-01T10:00:00Z"^^xsd:dateTime ;
+  prov:endedAtTime "2023-10-01T12:00:00Z"^^xsd:dateTime ;
+  prov:wasAssociatedWith <projectstaff/12> .
+
+<fronimoFiles/01> a elaute:FronimoFile ;
+  rdfs:label "fronimofile1.ft3" ;
+  prov:atLocation <file:///path/to/fronimofile1.ft3> ;
+  prov:generatedAtTime "2023-10-01"^^xsd:date ;
+  prov:wasGeneratedBy <typesettingActivities/01> ;
+  prov:hadPrimarySource <typesettingSources/01> ;
+  prov:wasAttributedTo <projectstaff/12> 
+  # also indicate type of notation
+  .
+
+# conversion from Fronimo to MEI (tabMEI_dipl in GLT) with Luteconv
+
+<conversionsFT3toMEI/01> a elaute:ConversionFT3ToMEI ;
+  prov:startedAtTime "2023-10-02T10:00:00Z"^^xsd:dateTime ;
+  prov:endedAtTime "2023-10-02T11:00:00Z"^^xsd:dateTime ;
+  prov:wasAssociatedWith <projectstaff/13> , <luteconv> ;
+  prov:used <fronimoFiles/01> ;
+  prov:generated <meiFilesGLT_T/01/v1> .
+  # maybe I need to include more properties (I will check at a later stage)
+
+<mei_friend> a prov:SoftwareAgent ;
+  schema:softwareAddOn <luteconv> .
+
+<luteconv> a prov:SoftwareAgent .
+
+<meiFilesGLT_T/01/v1> a elaute:MEIFile ; # T stands for transcription, E for edition; v1 is the first version (after conversion),
+  # vX is the Xth version after editing
+  rdfs:label "meiFileGLT_T_01_v1.mei" ;
+  prov:atLocation <file:///path/to/meiFileGLT_T_01_v1.mei> ;
+  prov:generatedAtTime "2023-10-02"^^xsd:date ;
+  prov:wasGeneratedBy <conversionsFT3toMEI/01> ;
+  prov:wasDerivedFrom <fronimoFiles/01> ;
+  prov:wasAttributedTo <luteconv> ; # we attribute here to a tool, not a person
+  # also indicate type of notation
+  .
+
+# editing the tabMEI_dipl file within mei-friend
+<meiEditingActivities/01> a elaute:Typesetting ;
+  prov:startedAtTime "2023-10-03T10:00:00Z"^^xsd:dateTime ;
+  prov:endedAtTime "2023-10-03T12:00:00Z"^^xsd:dateTime ;
+  prov:wasAssociatedWith <projectstaff/14> .
+
+
+# simpler version of workflow
+# do not use yet labels and comments, only the type
+# for entities use properties: a, label, atLocation, generatedAtTime, wasGeneratedBy, hadPrimarySource / wasDerivedFrom, wasAttributedTo
+# for activities use properties: startedAtTime, endedAtTime, wasAssociatedWith, used, generated
+# for agents do not use yet labels and comments, only the type

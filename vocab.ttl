@@ -1,0 +1,5 @@
+@prefix elautev: <https://e-laute.info/vocab#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+elautev:meiEncodingActivity rdfs:subClassOf prov:Activity .

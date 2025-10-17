@@ -52,6 +52,7 @@ def _get_role_uri(role: str) -> str:
     if role in ELAUTE_ROLE_MAPPING:
         # E-LAUTE specific role - use E-LAUTE URI
         return f"elaute:{role}"
+    # todo: correct mapping, we need uris, not human readable names to be returned (just a few)
     elif role in [
         "abridger", "actor", "adapter", "addressee", "analyst", "animator", "annotator",
         "announcer", "appellant", "appellee", "applicant", "architect", "arranger",
