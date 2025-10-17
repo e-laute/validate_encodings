@@ -25,7 +25,6 @@ from rdflib.namespace import RDF, DCTERMS, FOAF
 
 # Namespaces
 PROV = Namespace("http://www.w3.org/ns/prov#")
-MEI = Namespace("http://www.music-encoding.org/ns/mei#")
 LOC = Namespace("http://id.loc.gov/vocabulary/relators/")
 # E-LAUTE namespaces: vocab (predicates/classes) and data (instances)
 ELAUTE = Namespace("https://e-laute.info/vocab#")
@@ -115,32 +114,41 @@ def build_graph_from_head(head: ET.Element, file_path: Path) -> Graph:
     g.bind("prov", PROV)
     g.bind("foaf", FOAF)
     g.bind("dcterms", DCTERMS)
-    g.bind("mei", MEI)
     g.bind("loc", LOC)
     # Prefixes: 'elaute' for data instances, 'elautev' for vocabulary terms
     g.bind("elaute", ELAUTE_DATA)
     g.bind("elautev", ELAUTE)
 
-    file_id = _clean_uri(file_path.name)
-    work_id = _clean_uri(file_path.stem)
+    file_id = _clean_uri(file_path.stem)
 
-    file_node = URIRef(MEI + f"file/{file_id}")
-    # Source entity minted in E-LAUTE data namespace under encodings/
-    work_node = URIRef(ELAUTE_DATA + f"encodings/{work_id}")
+    # Extract contentitem_id from PID identifier in pubStmt
+    pub_stmt = head.find("mei:fileDesc/mei:pubStmt", MEI_XML)
+    contentitem_id = None
+    if pub_stmt is not None:
+        identifier = pub_stmt.find("mei:identifier[@type='PID']", MEI_XML)
+        if identifier is not None and identifier.text:
+            # Extract the part after "o:lau." prefix
+            pid_text = identifier.text.strip()
+            if pid_text.startswith("o:lau."):
+                contentitem_id = pid_text[6:]  # Remove "o:lau." prefix
+            else:
+                contentitem_id = _clean_uri(pid_text)
+
+    # Fallback to filename stem if no PID found
+    if not contentitem_id:
+        contentitem_id = _clean_uri(file_path.stem)
+
+    # Source entity minted in E-LAUTE data namespace
+    file_node = URIRef(ELAUTE_DATA + f"files/{file_id}")
     # Create an encoding activity for qualified associations
-    activity_node = URIRef(ELAUTE_DATA + f"activity/encoding/{work_id}")
+    activity_node = URIRef(ELAUTE_DATA + f"activities/{file_id}_mei")
 
-    # File entity
-    g.add((file_node, RDF.type, PROV.Entity))
-    g.add((file_node, DCTERMS.type, Literal("MEI Music Encoding")))
-    g.add((file_node, DCTERMS.source, Literal(str(file_path))))
 
     # Minimal link from work to file
-    g.add((work_node, RDF.type, PROV.Entity))
-    g.add((work_node, DCTERMS.hasFormat, file_node))
+    g.add((file_node, RDF.type, PROV.Entity))
     # Link encoding entity to its generating activity
-    g.add((work_node, PROV.wasGeneratedBy, activity_node))
-    g.add((activity_node, RDF.type, ELAUTE.meiEncoding))
+    g.add((file_node, PROV.wasGeneratedBy, activity_node))
+    g.add((activity_node, RDF.type, ELAUTE.meiEncodingActivity))
 
     # titleStmt (titles omitted by request) -> process only respStmt
     title_stmt = head.find("mei:fileDesc/mei:titleStmt", MEI_XML)
@@ -150,20 +158,11 @@ def build_graph_from_head(head: ET.Element, file_path: Path) -> Graph:
             # Persons
             for p in resp.findall("mei:persName", MEI_XML):
                 role = p.get("role", "creator")
-                auth_uri = p.get("authURI") or p.get("authUri")
+                auth_uri = p.get("authURI") or p.get("authUri") or p.get("auth.uri")
                 if auth_uri:
                     agent_node = URIRef(auth_uri)
                 else:
-                    xml_id = p.get("{http://www.w3.org/XML/1998/namespace}id", "")
-                    if not xml_id:
-                        fn = p.find("mei:foreName", MEI_XML)
-                        ln = p.find("mei:famName", MEI_XML)
-                        if fn is not None and ln is not None:
-                            xml_id = f"person_{_clean_uri(fn.text or '')}_{_clean_uri(ln.text or '')}"
-                    agent_node = (
-                        URIRef(ELAUTE_DATA + f"person/{xml_id}")
-                        if xml_id
-                        else URIRef(ELAUTE_DATA + f"person/{_clean_uri(p.text or 'person')}"))
+                    raise ValueError(f"No authURI found for person {p.text}")
 
                 # Define FOAF/PROV person
                 g.add((agent_node, RDF.type, FOAF.Person))
@@ -175,6 +174,13 @@ def build_graph_from_head(head: ET.Element, file_path: Path) -> Graph:
                 if ln is not None and (ln.text or '').strip():
                     g.add((agent_node, FOAF.familyName, Literal((ln.text or '').strip())))
 
+                # Add qualified attribution for metadataContact
+                if role == "metadataContact":
+                    attr_bn = BNode()
+                    g.add((file_node, PROV.qualifiedAttribution, attr_bn))
+                    g.add((attr_bn, RDF.type, PROV.Attribution))
+                    g.add((attr_bn, PROV.agent, agent_node))
+                    g.add((attr_bn, PROV.hadRole, _role_to_node(role)))
 
                 # Only add to activity if not metadataContact
                 if role != "metadataContact":

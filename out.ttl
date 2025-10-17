@@ -1,44 +1,50 @@
-@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix elautev: <https://e-laute.info/vocab#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 
-<https://e-laute.info/data/encodings/judenkoenig_test> a prov:Entity ;
-    dcterms:hasFormat <http://www.music-encoding.org/ns/mei#file/judenkoenig_testmei> ;
-    prov:wasGeneratedBy <https://e-laute.info/data/activity/encoding/judenkoenig_test> .
+<https://e-laute.info/data/files/jud_1523-2_n12_18v-19r_enc_ed_glt> a prov:Entity ;
+    prov:qualifiedAttribution [ a prov:Attribution ;
+            prov:agent <https://e-laute.info/data/projectstaff/15> ;
+            prov:hadRole elautev:metadataContact ],
+        [ a prov:Attribution ;
+            prov:agent <https://e-laute.info/data/projectstaff/10> ;
+            prov:hadRole elautev:metadataContact ] ;
+    prov:wasGeneratedBy <https://e-laute.info/data/activities/jud_1523-2_n12_18v-19r_enc_ed_glt> .
 
-<https://e-laute.info/data/person/projectstaff-10> a prov:Agent,
+<https://e-laute.info/data/activities/jud_1523-2_n12_18v-19r_enc_ed_glt> a elautev:meiEncodingActivity ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent <https://e-laute.info/data/projectstaff/17> ;
+            prov:hadRole elautev:fronimoEditor ],
+        [ a prov:Association ;
+            prov:agent <https://e-laute.info/data/projectstaff/17> ;
+            prov:hadRole elautev:meiEditor ],
+        [ a prov:Association ;
+            prov:agent <https://e-laute.info/data/projectstaff/16> ;
+            prov:hadRole elautev:musescoreEditor ],
+        [ a prov:Association ;
+            prov:agent <https://e-laute.info/data/projectstaff/16> ;
+            prov:hadRole elautev:meiEditor ] ;
+    prov:wasAssociatedWith <https://e-laute.info/data/projectstaff/16>,
+        <https://e-laute.info/data/projectstaff/17> .
+
+<https://e-laute.info/data/projectstaff/10> a prov:Agent,
         foaf:Person ;
     foaf:familyName "Kyriazis" ;
     foaf:givenName "Ilias" .
 
-<https://e-laute.info/data/person/projectstaff-15> a prov:Agent,
+<https://e-laute.info/data/projectstaff/15> a prov:Agent,
         foaf:Person ;
     foaf:familyName "Jaklin" ;
     foaf:givenName "Julia" .
 
-<http://www.music-encoding.org/ns/mei#file/judenkoenig_testmei> a prov:Entity ;
-    dcterms:source "judenkoenig_test.mei" ;
-    dcterms:type "MEI Music Encoding" .
-
-<https://e-laute.info/data/activity/encoding/judenkoenig_test> a elautev:meiEncoding ;
-    prov:qualifiedAssociation [ a prov:Association ;
-            prov:agent <https://e-laute.info/data/person/projectstaff-16> ;
-            prov:hadRole elautev:meiEditor ],
-        [ a prov:Association ;
-            prov:agent <https://e-laute.info/data/person/projectstaff-11> ;
-            prov:hadRole elautev:meiEditor ] ;
-    prov:wasAssociatedWith <https://e-laute.info/data/person/projectstaff-11>,
-        <https://e-laute.info/data/person/projectstaff-16> .
-
-<https://e-laute.info/data/person/projectstaff-11> a prov:Agent,
-        foaf:Person ;
-    foaf:familyName "Janjuš" ;
-    foaf:givenName "Olja" .
-
-<https://e-laute.info/data/person/projectstaff-16> a prov:Agent,
+<https://e-laute.info/data/projectstaff/16> a prov:Agent,
         foaf:Person ;
     foaf:familyName "Burghoff" ;
     foaf:givenName "Henning" .
+
+<https://e-laute.info/data/projectstaff/17> a prov:Agent,
+        foaf:Person ;
+    foaf:familyName "Döring" ;
+    foaf:givenName "Irina" .
 
 
