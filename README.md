@@ -6,22 +6,22 @@ List of (prov) activities:
 
 
 Converting
-Derivative Generating: Automated conversion of the source notation type to other lute notation types
-Luteconv Converting: Fronimo files are converted to MEI using luteconv
-Abtab notehead Converting: Tablature to notehead transcription
+Derivative Generating: Automated conversion of the source notation type to other lute notation types (missing)
+Luteconv Converting: Fronimo files are converted to MEI using luteconv (application: luteconv)
+Abtab notehead Converting: Tablature to notehead transcription (missing)
 
 Editing
-Musescore Editing: Sources are transcribed and edited in CMN in Musescore
-CMN Editing: Correction of the abtab polyphonic transcription
+Musescore Editing: Sources are transcribed and edited in CMN in Musescore (musescoreEditor)
+CMN Editing: Correction of the abtab polyphonic transcription (meiEditor)
 
 Transcribing
-Abtab polyphonic Transcribing: Tablature to polyhonic transcription
+Abtab polyphonic Transcribing: Tablature to polyhonic transcription (missing)
 
 Proofreading
-MEI Proofreading: Proofreading of the MEI Files
+MEI Proofreading: Proofreading of the MEI Files (meiEditor)
 
 Typesetting
-Fronimo Typesetting: Sources are typeset in Fronimo
+Fronimo Typesetting: Sources are typeset in Fronimo (fronimoEditor)
 
 
 Validating:
