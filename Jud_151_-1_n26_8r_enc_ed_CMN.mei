@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-model href="https://music-encoding.org/schema/5.1/mei-all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://music-encoding.org/schema/5.1/mei-all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="5.1">
+   <meiHead>
+      <fileDesc>
+         <titleStmt>
+            <title type="main">Phaleutium Hendecasyllabum. Vivamus mea (Vivamus mea lesbia)<titlePart type="subordinate">edition in <abbr expan="Common Music Notation">CMN</abbr>
+               </titlePart>
+            </title>
+            <title type="original">Phaleutium Hendecasyllabum. Vivamus mea</title>
+            <title type="normalized">Vivamus mea lesbia</title>
+            <respStmt>
+               <persName role="fronimoEditor" auth.uri="https://e-laute.info/data/projectstaff/24" xml:id="projectstaff-24">
+                  <foreName>Irina</foreName>
+                  <famName>Döring</famName>
+               </persName>
+               <persName role="musescoreEditor" auth.uri="https://e-laute.info/data/projectstaff/16" xml:id="projectstaff-16">
+                  <foreName>Henning</foreName>
+                  <famName>Burghoff</famName>
+               </persName>
+               <persName role="meiEditor" auth.uri="https://e-laute.info/data/projectstaff/17" xml:id="projectstaff-17">
+                  <foreName>Irina</foreName>
+                  <famName>Döring</famName>
+               </persName>
+               <persName role="meiEditor" auth.uri="https://e-laute.info/data/projectstaff/16" xml:id="projectstaff-16">
+                  <foreName>Henning</foreName>
+                  <famName>Burghoff</famName>
+               </persName>
+               <persName role="metadataContact" auth.uri="https://e-laute.info/data/projectstaff/10" xml:id="projectstaff-10">
+                  <foreName>Ilias</foreName>
+                  <famName>Kyriazis</famName>
+               </persName>
+               <persName role="metadataContact" auth.uri="https://e-laute.info/data/projectstaff/15" xml:id="projectstaff-15">
+                  <foreName>Julia</foreName>
+                  <famName>Jaklin</famName>
+               </persName>
+               <corpName role="provider" xml:id="elaute">
+                  <ref target="https://doi.org/10.55776/I6019">
+                     <abbr>E-LAUTE</abbr>
+                     <expan>Electronic Linked Annotated Unified Tablature Edition</expan>
+                  </ref>
+               </corpName>
+               <corpName role="funder" xml:id="weave">
+                  <ref target="https://weave-research.net/">Weave</ref>
+               </corpName>
+               <corpName role="funder" xml:id="fwf">
+                  <ref target="https://www.fwf.ac.at/">
+                     <abbr>FWF</abbr>
+                     <expan>Austrian Science Fund</expan>
+                  </ref>
+               </corpName>
+               <corpName role="funder" xml:id="dfg">
+                  <ref target="https://www.dfg.de/">
+                     <abbr>DFG</abbr>
+                     <expan>German Research Foundation</expan>
+                  </ref>
+               </corpName>
+               <corpName role="funder" xml:id="snf">
+                  <ref target="https://www.snf.ch/">
+                     <abbr>SNF</abbr>
+                     <expan>Swiss National Science Foundation</expan>
+                  </ref>
+               </corpName>
+            </respStmt>
+         </titleStmt>
+         <editionStmt>
+            <edition n="1" resp="#projectstaff-16">First edition in CMN. Lute tuned in A.</edition>
+         </editionStmt>
+         <pubStmt>
+            <publisher>
+               <corpName>
+                  <ref target="http://www.onb.ac.at">Austrian National Library</ref>
+               </corpName>
+               <address>
+                  <street>Josefsplatz 1</street>
+                  <postCode>1015</postCode>
+                  <settlement>Vienna</settlement>
+                  <country>Austria</country>
+               </address>
+            </publisher>
+            <date isodate="2025-07-07">2025-07-07</date>
+            <pubPlace>
+               <ref target="http://www.geonames.org/2761369/">Vienna</ref>
+            </pubPlace>
+            <distributor>
+               <corpName>
+                  <ref target="http://www.onb.ac.at">Austrian National Library</ref>
+               </corpName>
+               <address>
+                  <street>Josefsplatz 1</street>
+                  <postCode>1015</postCode>
+                  <settlement>Vienna</settlement>
+                  <country>Austria</country>
+               </address>
+            </distributor>
+            <availability>
+               <useRestrict>
+                  <ref target="https://creativecommons.org/licenses/by-sa/4.0/">Distributed under the Creative Commons Attribution-ShareAlike 4.0 International license (CC BY-SA 4.0)</ref>
+               </useRestrict>
+            </availability>
+            <identifier type="PID">o:lau.Jud_151-1_n26</identifier>
+         </pubStmt>
+         <sourceDesc>
+            <source>
+               <biblStruct>
+                  <analytic>
+                     <title>Phaleutium Hendecasyllabum. Vivamus mea</title>
+                     <respStmt>
+                        <persName role="scribe" auth.uri="https://e-laute.info/data/persons/78" xml:id="persons-78">
+                           <foreName>Hans</foreName>
+                           <famName>Judenkünig</famName>
+                        </persName>
+                     </respStmt>
+                     <biblScope>8r</biblScope>
+                     <identifier>Jud_151-1_n26</identifier>
+                  </analytic>
+                  <monogr>
+                     <title>Vtilis &amp; compendiaria introductio</title>
+                     <identifier>A-Wn MS47356-8°</identifier>
+                     <respStmt>
+                        <persName role="publisher" auth.uri="https://e-laute.info/data/persons/79" xml:id="persons-79">
+                           <foreName>Johannes</foreName>
+                           <famName>Singriener</famName>
+                        </persName>
+                        <persName role="intabulator" auth.uri="https://e-laute.info/data/persons/78" corresp="#persons-78">
+                           <foreName>Hans</foreName>
+                           <famName>Judenkünig</famName>
+                        </persName>
+                     </respStmt>
+                     <imprint>
+                        <pubPlace>
+                           <geogName auth.uri="https://e-laute.info/data/places/88" xml:id="places-88">Viennae</geogName>
+                        </pubPlace>
+                        <date isodate="1523">1523</date>
+                     </imprint>
+                  </monogr>
+               </biblStruct>
+            </source>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <appInfo xml:id="avw2b6i">
+            <application xml:id="a1273wrc" isodate="2025-10-14T20:06:42" version="5.6.0-85e7620">
+               <name xml:id="nb4um3v">Verovio</name>
+               <p xml:id="p1r04gt8">Transcoded from MusicXML</p>
+            </application>
+            <application xml:id="a5eywqa1" startdate="2025-10-14T20:06:46" version="1.2.9" enddate="2025-10-14T20:06:46">
+               <name xml:id="n86457f">mei-friend</name>
+               <p xml:id="pyqp05">First edit by mei-friend 1.2.9.</p>
+            </application>
+         </appInfo>
+         <editorialDecl>
+            <p>E-LAUTE Edition Guidelines: https://edition.onb.ac.at/fedora/objects/o:lau.red-editionguidelines/datastreams/MEI_CONVENTIONS/content</p>
+            <p/>
+         </editorialDecl>
+      </encodingDesc>
+      <revisionDesc>
+         <change isodate="YYYY-MM-DD" n="1" resp="#">
+            <changeDesc>
+               <p/>
+            </changeDesc>
+         </change>
+      </revisionDesc>
+   </meiHead>
+   <music>
+      <facsimile>
+         <surface xml:id="s7rcfyq2" n="1">
+            <graphic target="https://api.onb.ac.at/iiif/image/v3/10044BF1/uk4nGb4kRHWwTgni/full/max/0/default.jpg"/>
+         </surface>
+      </facsimile>
+      <body>
+         <mdiv xml:id="p1pg4imd">
+            <score xml:id="qcx95o">
+               <scoreDef xml:id="roei9nm">
+                  <staffGrp xml:id="t3ym8ep">
+                     <staffGrp xml:id="P1" bar.thru="true">
+                        <grpSym xml:id="oxlxr1x" symbol="brace"/>
+                        <instrDef xml:id="uj91ky8" midi.channel="0" midi.volume="78%"/>
+                        <staffDef xml:id="w17qw08e" n="1" lines="5" ppq="1">
+                           <clef xml:id="dtyaw5n" shape="G" line="2"/>
+                           <keySig xml:id="e15vk7lz" sig="0"/>
+                        </staffDef>
+                        <staffDef xml:id="f5y03z5" n="2" lines="5" ppq="1">
+                           <clef xml:id="m18j33k4" shape="F" line="4"/>
+                           <keySig xml:id="nji6ra6" sig="0"/>
+                        </staffDef>
+                     </staffGrp>
+                  </staffGrp>
+               </scoreDef>
+               <section xml:id="sydkgvf" n="8r" facs="#s7rcfyq2">
+                  <measure xml:id="p5jofm" right="end" metcon="false" n="1">
+                     <staff xml:id="y1m3tx0p" n="1">
+                        <layer xml:id="a3nyqij" n="1">
+                           <note xml:id="bipu50q" dur.ppq="2" dur="2" oct="5" pname="c" stem.dir="up"/>
+                           <note xml:id="c1lzw1v1" dur.ppq="2" dur="2" oct="4" pname="a" stem.dir="up"/>
+                           <note xml:id="dn2dwa" dur.ppq="2" dur="2" oct="4" pname="a" stem.dir="up"/>
+                           <note xml:id="e1iyqsp0" dur.ppq="1" dur="4" oct="4" pname="a" stem.dir="up"/>
+                           <note xml:id="f1srcyrt" dur.ppq="1" dur="4" oct="4" pname="b" stem.dir="up"/>
+                           <note xml:id="gxo9950" dur.ppq="2" dur="2" oct="5" pname="c" stem.dir="up"/>
+                           <note xml:id="h1vwnhjh" dur.ppq="1" dur="4" oct="4" pname="a" stem.dir="up"/>
+                           <note xml:id="i1bhhor7" dur.ppq="2" dur="2" oct="5" pname="c" stem.dir="up"/>
+                           <note xml:id="jzupucu" dur.ppq="1" dur="4" oct="4" pname="g" stem.dir="up"/>
+                           <note xml:id="k17gq6tc" dur.ppq="2" dur="2" oct="4" pname="a" stem.dir="up"/>
+                           <note xml:id="l1i8rx9t" dur.ppq="4" dur="1" oct="4" pname="a"/>
+                        </layer>
+                        <layer xml:id="nzx38ok" n="2">
+                           <note xml:id="ozozvne" dur.ppq="2" dur="2" oct="4" pname="f" stem.dir="down"/>
+                           <note xml:id="p1ln0psx" dur.ppq="2" dur="2" oct="4" pname="f" stem.dir="down"/>
+                           <note xml:id="q4l3swd" dur.ppq="2" dur="2" oct="4" pname="c" stem.dir="down"/>
+                           <note xml:id="rahoou5" dur.ppq="1" dur="4" oct="4" pname="f" stem.dir="down"/>
+                           <note xml:id="s131c8v8" dur.ppq="1" dur="4" oct="4" pname="d" stem.dir="down"/>
+                           <note xml:id="t1khuuwq" dur.ppq="2" dur="2" oct="4" pname="f" stem.dir="down"/>
+                           <note xml:id="ubbv67a" dur.ppq="1" dur="4" oct="4" pname="f" stem.dir="down"/>
+                           <note xml:id="vl2ugrp" dur.ppq="2" dur="2" oct="4" pname="f" stem.dir="down"/>
+                           <note xml:id="w7su8lz" dur.ppq="1" dur="4" oct="4" pname="e" stem.dir="down"/>
+                           <note xml:id="x18vciad" dur.ppq="2" dur="2" oct="4" pname="f" stem.dir="down"/>
+                           <note xml:id="ymavovp" dur.ppq="4" dur="1" oct="4" pname="f"/>
+                        </layer>
+                     </staff>
+                     <staff xml:id="zgdwk3o" n="2">
+                        <layer xml:id="z3rodpe" n="5">
+                           <note xml:id="a1n8ave8" dur.ppq="2" dur="2" oct="3" pname="f" stem.dir="down"/>
+                           <note xml:id="b1ba8kka" dur.ppq="2" dur="2" oct="3" pname="f" stem.dir="down"/>
+                           <note xml:id="cz8ik60" dur.ppq="2" dur="2" oct="3" pname="a" stem.dir="down"/>
+                           <note xml:id="dq0x16a" dur.ppq="1" dur="4" oct="3" pname="a" stem.dir="down"/>
+                           <note xml:id="ec53y0z" dur.ppq="1" dur="4" oct="3" pname="g" stem.dir="down"/>
+                           <note xml:id="f1kkdxdt" dur.ppq="2" dur="2" oct="3" pname="f" stem.dir="down"/>
+                           <note xml:id="g1cruouo" dur.ppq="1" dur="4" oct="3" pname="f" stem.dir="down"/>
+                           <note xml:id="h111fan2" dur.ppq="2" dur="2" oct="3" pname="f" stem.dir="down"/>
+                           <note xml:id="i1qetyrs" dur.ppq="1" dur="4" oct="3" pname="g" stem.dir="down"/>
+                           <note xml:id="j1bfykv0" dur.ppq="2" dur="2" oct="3" pname="f" stem.dir="down"/>
+                           <note xml:id="mkey567" dur.ppq="4" dur="1" oct="3" pname="f"/>
+                        </layer>
+                     </staff>
+                     <fermata xml:id="mx5koja" staff="1" startid="#l1i8rx9t" form="norm" place="above"/>
+                     <dir staff="1" tstamp="1" place="above" type="ref">
+                        <rend fontstyle="normal" fontsize="x-small">fol. 8r</rend>
+                     </dir>
+                  </measure>
+               </section>
+            </score>
+         </mdiv>
+      </body>
+   </music>
+</mei>

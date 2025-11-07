@@ -2,4 +2,83 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
+elautev:notationType
+
 elautev:meiEncodingActivity rdfs:subClassOf prov:Activity .
+
+elautev:convertingActivity rdfs:subClassOf prov:Activity .
+elautev:convertingActivity rdfs:label "Converting" .
+
+elautev:derivativeGeneratingActivity rdfs:subClassOf elautev:convertingActivity .
+elautev:derivativeGeneratingActivity rdfs:label "Derivative Generating" .
+elautev:derivativeGeneratingActivity rdfs:comment "Automated conversion of the source notation type to other lute notation types (missing)" .
+
+elautev:luteconvConvertingActivity rdfs:subClassOf elautev:convertingActivity .
+elautev:luteconvConvertingActivity rdfs:label "Luteconv Converting" .
+elautev:luteconvConvertingActivity rdfs:comment "Fronimo files are converted to MEI using luteconv (application: luteconv)" .
+
+elautev:abtabNoteheadConvertingActivity rdfs:subClassOf elautev:convertingActivity .
+elautev:abtabNoteheadConvertingActivity rdfs:label "Abtab notehead Converting" .
+elautev:abtabNoteheadConvertingActivity rdfs:comment "Tablature to notehead transcription (missing)" .
+
+elautev:editingActivity rdfs:subClassOf prov:Activity .
+elautev:editingActivity rdfs:label "Editing" .
+
+elautev:musescoreEditingActivity rdfs:subClassOf elautev:editingActivity .
+elautev:musescoreEditingActivity rdfs:label "Musescore Editing" .
+elautev:musescoreEditingActivity rdfs:comment "Sources are transcribed and edited in CMN in Musescore (musescoreEditor)" .
+
+elautev:meiEditingActivity rdfs:subClassOf elautev:editingActivity .
+elautev:meiEditingActivity rdfs:label "MEI Editing" .
+elautev:meiEditingActivity rdfs:comment "Editing of MEI in mei-friend (meiEditor)" .
+
+elautev:transcribingActivity rdfs:subClassOf prov:Activity .
+elautev:transcribingActivity rdfs:label "Transcribing" .
+
+elautev:abtabPolyphonicTranscribingActivity rdfs:subClassOf elautev:transcribingActivity .
+elautev:abtabPolyphonicTranscribingActivity rdfs:label "Abtab polyphonic Transcribing" .
+elautev:abtabPolyphonicTranscribingActivity rdfs:comment "Tablature to polyhonic transcription (missing)" .
+
+elautev:typesettingActivity rdfs:subClassOf prov:Activity .
+elautev:typesettingActivity rdfs:label "Typesetting" .
+
+elautev:fronimoTypesettingActivity rdfs:subClassOf elautev:typesettingActivity .
+elautev:fronimoTypesettingActivity rdfs:label "Fronimo Typesetting" .
+elautev:fronimoTypesettingActivity rdfs:comment "Sources are typeset in Fronimo (fronimoEditor)" .
+
+elautev:validatingActivity rdfs:subClassOf prov:Activity .
+elautev:validatingActivity rdfs:label "Validating" .
+
+elautev:xmlValidatingActivity rdfs:subClassOf elautev:validatingActivity .
+elautev:xmlValidatingActivity rdfs:label "XML Validating" .
+elautev:xmlValidatingActivity rdfs:comment "Validating XML structure" .
+
+elautev:schematronValidatingActivity rdfs:subClassOf elautev:validatingActivity .
+elautev:schematronValidatingActivity rdfs:label "Schematron Validating" .
+elautev:schematronValidatingActivity rdfs:comment "Checking file against MEI and TEI schema" .
+
+elautev:headerValidatingActivity rdfs:subClassOf elautev:validatingActivity .
+elautev:headerValidatingActivity rdfs:label "Header Validating" .
+elautev:headerValidatingActivity rdfs:comment "Checking Header metadata agains graph" .
+
+elautev:metadataProvisionActivity rdfs:subClassOf prov:Activity .
+elautev:metadataProvisionActivity rdfs:label "Metadata Provision" .
+
+elautev:provDataProvisionActivity rdfs:subClassOf elautev:metadataProvisionActivity .
+elautev:provDataProvisionActivity rdfs:label "Prov Data Provision" .
+elautev:provDataProvisionActivity rdfs:comment "Generating Provenance Graph data" .
+
+elautev:metadataProvisionForBibliographicDatabaseActivity rdfs:subClassOf elautev:metadataProvisionActivity .
+elautev:metadataProvisionForBibliographicDatabaseActivity rdfs:label "Metadata Provision" .
+elautev:metadataProvisionForBibliographicDatabaseActivity rdfs:comment "Generating Metadata for bibliographic database" .
+
+elautev:provisionActivity rdfs:subClassOf prov:Activity .
+elautev:provisionActivity rdfs:label "Provision" .
+
+elautev:rdmProvisionActivity rdfs:subClassOf elautev:provisionActivity .
+elautev:rdmProvisionActivity rdfs:label "RDM Provision" .
+elautev:rdmProvisionActivity rdfs:comment "Provide MEI data for release on TUW RDM" .
+
+elautev:platformProvisionActivity rdfs:subClassOf elautev:provisionActivity .
+elautev:platformProvisionActivity rdfs:label "Platform Provision" .
+elautev:platformProvisionActivity rdfs:comment "Provide MEI data for release on E-Laute Platform" .

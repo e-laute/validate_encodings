@@ -1,0 +1,85 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix elautev: <https://e-laute.info/vocab#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://e-laute.info/data/files/jud_1523-2_n12_18v-19r_enc_ed_glt_ed_ILT> a prov:Entity ;
+    prov:wasDerivedFrom <https://e-laute.info/data/files/jud_1523-2_n12_18v-19r_enc_ed_glt> ;
+    prov:wasGeneratedBy <https://e-laute.info/data/activities/jud_1523-2_n12_18v-19r_enc_ed_glt_derivative_1> ;
+    elautev:notationType "ILT" .
+
+<https://e-laute.info/data/activities/jud_1523-2_n12_18v-19r_enc_ed_glt_derivative_1> a elautev:derivativeGeneratingActivity ;
+    prov:used <https://e-laute.info/data/files/jud_1523-2_n12_18v-19r_enc_ed_glt> .
+
+<https://e-laute.info/data/activities/jud_1523-2_n12_18v-19r_enc_ed_glt_luteconv_1> a elautev:luteconvConvertingActivity ;
+    prov:endedAtTime "2024-04-12"^^xsd:date ;
+    prov:generated <https://e-laute.info/data/files/jud_1523-2_n12_18v-19r_enc_ed_glt_converted_mei> ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            dcterms:hasVersion "1.4.7" ;
+            prov:agent <https://e-laute.info/data/software/luteconv> ] ;
+    prov:used <https://e-laute.info/data/files/jud_1523-2_n12_18v-19r_enc_ed_glt_generated_ft3> ;
+    prov:wasAssociatedWith <https://e-laute.info/data/software/luteconv> .
+
+<https://e-laute.info/data/activities/jud_1523-2_n12_18v-19r_enc_ed_glt_typesetting_1> a elautev:fronimoTypesettingActivity ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent <https://e-laute.info/data/projectstaff/17> ;
+            prov:hadRole elautev:fronimoEditor ] ;
+    prov:wasAssociatedWith <https://e-laute.info/data/projectstaff/17> .
+
+<https://e-laute.info/data/projectstaff/10> a prov:Agent,
+        foaf:Person ;
+    foaf:familyName "Kyriazis" ;
+    foaf:givenName "Ilias" .
+
+<https://e-laute.info/data/projectstaff/15> a prov:Agent,
+        foaf:Person ;
+    foaf:familyName "Jaklin" ;
+    foaf:givenName "Julia" .
+
+<https://e-laute.info/data/activities/jud_1523-2_n12_18v-19r_enc_ed_glt_mei_editing_1> a elautev:meiEditingActivity ;
+    prov:generated <https://e-laute.info/data/files/jud_1523-2_n12_18v-19r_enc_ed_glt> ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent <https://e-laute.info/data/projectstaff/17> ;
+            prov:hadRole elautev:meiEditor ],
+        [ a prov:Association ;
+            prov:agent <https://e-laute.info/data/projectstaff/16> ;
+            prov:hadRole elautev:meiEditor ] ;
+    prov:used <https://e-laute.info/data/files/jud_1523-2_n12_18v-19r_enc_ed_glt_converted_mei> ;
+    prov:wasAssociatedWith <https://e-laute.info/data/projectstaff/16>,
+        <https://e-laute.info/data/projectstaff/17> .
+
+<https://e-laute.info/data/files/jud_1523-2_n12_18v-19r_enc_ed_glt_generated_ft3> a prov:Entity ;
+    prov:wasGeneratedBy <https://e-laute.info/data/activities/jud_1523-2_n12_18v-19r_enc_ed_glt_typesetting_1> .
+
+<https://e-laute.info/data/projectstaff/16> a prov:Agent,
+        foaf:Person ;
+    foaf:familyName "Burghoff" ;
+    foaf:givenName "Henning" .
+
+<https://e-laute.info/data/software/luteconv> a prov:SoftwareAgent ;
+    dcterms:hasVersion "1.4.7" .
+
+<https://e-laute.info/data/files/jud_1523-2_n12_18v-19r_enc_ed_glt> a prov:Entity ;
+    prov:qualifiedAttribution [ a prov:Attribution ;
+            prov:agent <https://e-laute.info/data/projectstaff/15> ;
+            prov:hadRole elautev:metadataContact ],
+        [ a prov:Attribution ;
+            prov:agent <https://e-laute.info/data/projectstaff/10> ;
+            prov:hadRole elautev:metadataContact ] ;
+    prov:wasDerivedFrom <https://e-laute.info/data/files/jud_1523-2_n12_18v-19r_enc_ed_glt_converted_mei> ;
+    prov:wasGeneratedBy <https://e-laute.info/data/activities/jud_1523-2_n12_18v-19r_enc_ed_glt_mei_editing_1> ;
+    elautev:notationType "GLT" .
+
+<https://e-laute.info/data/files/jud_1523-2_n12_18v-19r_enc_ed_glt_converted_mei> a prov:Entity ;
+    prov:generatedAtTime "2024-04-12"^^xsd:date ;
+    prov:wasDerivedFrom <https://e-laute.info/data/files/jud_1523-2_n12_18v-19r_enc_ed_glt_generated_ft3> ;
+    prov:wasGeneratedBy <https://e-laute.info/data/activities/jud_1523-2_n12_18v-19r_enc_ed_glt_luteconv_1> ;
+    prov:wasUsedBy <https://e-laute.info/data/activities/jud_1523-2_n12_18v-19r_enc_ed_glt_mei_editing_1> ;
+    elautev:notationType "GLT" .
+
+<https://e-laute.info/data/projectstaff/17> a prov:Agent,
+        foaf:Person ;
+    foaf:familyName "Döring" ;
+    foaf:givenName "Irina" .
+
