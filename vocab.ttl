@@ -41,6 +41,10 @@ elautev:abtabPolyphonicTranscribingActivity rdfs:subClassOf elautev:transcribing
 elautev:abtabPolyphonicTranscribingActivity rdfs:label "Abtab polyphonic Transcribing" .
 elautev:abtabPolyphonicTranscribingActivity rdfs:comment "Tablature to polyhonic transcription (missing)" .
 
+elautev:abtabNoteheadTranscribingActivity rdfs:subClassOf elautev:transcribingActivity .
+elautev:abtabNoteheadTranscribingActivity rdfs:label "Abtab notehead Transcribing" .
+elautev:abtabNoteheadTranscribingActivity rdfs:comment "Tablature to notehead transcription (application: abtab)" .
+
 elautev:typesettingActivity rdfs:subClassOf prov:Activity .
 elautev:typesettingActivity rdfs:label "Typesetting" .
 
