@@ -4,6 +4,8 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<https://e-laute.info/data/contentitems/Jud_151-1_n26> elautev:hasFacsimile <https://api.onb.ac.at/iiif/image/v3/10044BF1/uk4nGb4kRHWwTgni/full/max/0/default.jpg> .
+
 <https://e-laute.info/data/projectstaff/24> a prov:Agent,
         foaf:Person ;
     foaf:familyName "Döring" ;
@@ -36,6 +38,8 @@
         foaf:Person ;
     foaf:familyName "Jaklin" ;
     foaf:givenName "Julia" .
+
+<https://api.onb.ac.at/iiif/image/v3/10044BF1/uk4nGb4kRHWwTgni/full/max/0/default.jpg> a prov:Entity .
 
 <https://e-laute.info/data/activities/jud_151_-1_n26_8r_enc_ed_cmn_mei_editing_1> a elautev:meiEditingActivity ;
     prov:generated <https://e-laute.info/data/files/jud_151_-1_n26_8r_enc_ed_cmn> ;
@@ -73,6 +77,7 @@
     elautev:notationType "CMN" .
 
 <https://e-laute.info/data/files/jud_151_-1_n26_8r_enc_ed_cmn_generated_musescorexml> a prov:Entity ;
+    prov:wasDerivedFrom <https://api.onb.ac.at/iiif/image/v3/10044BF1/uk4nGb4kRHWwTgni/full/max/0/default.jpg> ;
     prov:wasGeneratedBy <https://e-laute.info/data/activities/jud_151_-1_n26_8r_enc_ed_cmn_musescore_editing_1> ;
     prov:wasUsedBy <https://e-laute.info/data/activities/jud_151_-1_n26_8r_enc_ed_cmn_verovio_1> .
 

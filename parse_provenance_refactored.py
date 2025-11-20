@@ -189,6 +189,21 @@ def _role_to_node(role: str):
     return Literal(role)
 
 
+def _extract_facsimile_targets(file_path: Path) -> list[str]:
+    """Extract image targets from <facsimile>//<graphic>@target anywhere in the MEI."""
+    try:
+        tree = ET.parse(file_path)
+        root = tree.getroot()
+        targets: list[str] = []
+        for graphic in root.findall(".//mei:facsimile//mei:graphic", MEI_XML):
+            target = (graphic.get("target") or "").strip()
+            if target:
+                targets.append(target)
+        return targets
+    except Exception:
+        return []
+
+
 def parse_mei_head(path: Path) -> ET.Element:
     tree = ET.parse(path)
     root = tree.getroot()
@@ -238,6 +253,9 @@ def build_graph_from_head(head: ET.Element, file_path: Path) -> Graph:
     file_node = URIRef(ELAUTE_DATA + f"files/{file_id}")
     # Minimal link from work to file
     g.add((file_node, RDF.type, PROV.Entity))
+
+    # Mint content item entity from PID and attach file to it
+    contentitem_node = URIRef(ELAUTE_DATA + f"contentitems/{contentitem_id}")
 
     # Collect agents by role for pipeline associations
     fronimo_editors: set[URIRef] = set()
@@ -300,6 +318,12 @@ def build_graph_from_head(head: ET.Element, file_path: Path) -> Graph:
             use_musescore = True
 
     # Pipeline Step 1: Fronimo typesetting and/or MuseScore editing → generated source entities
+    facsimile_targets = _extract_facsimile_targets(file_path)
+    # Link content item to facsimile images
+    for tgt in facsimile_targets:
+        img_node = URIRef(tgt) if "://" in tgt else URIRef(ELAUTE_DATA + f"resources/{_clean_uri(tgt)}")
+        g.add((img_node, RDF.type, PROV.Entity))
+        g.add((contentitem_node, ELAUTE.hasFacsimile, img_node))
     e1_fronimo = None
     e_conv_fronimo = None
     e1_musescore = None
@@ -319,6 +343,11 @@ def build_graph_from_head(head: ET.Element, file_path: Path) -> Graph:
         g.add((e1_fronimo, RDF.type, PROV.Entity))
         g.add((e1_fronimo, PROV.wasGeneratedBy, a1_fronimo))
         g.add((a1_fronimo, PROV.generated, e1_fronimo))
+        # First file derived from facsimile image(s)
+        for tgt in facsimile_targets:
+            img_node = URIRef(tgt) if "://" in tgt else URIRef(ELAUTE_DATA + f"resources/{_clean_uri(tgt)}")
+            g.add((img_node, RDF.type, PROV.Entity))
+            g.add((e1_fronimo, PROV.wasDerivedFrom, img_node))
         # Pipeline Step 1.5: Luteconv conversion → converted MEI from FT3
         a1_5 = URIRef(ELAUTE_DATA + f"activities/{file_id}_luteconv_1")
         g.add((a1_5, RDF.type, ELAUTE.luteconvConvertingActivity))
@@ -376,6 +405,11 @@ def build_graph_from_head(head: ET.Element, file_path: Path) -> Graph:
         g.add((e1_musescore, RDF.type, PROV.Entity))
         g.add((e1_musescore, PROV.wasGeneratedBy, a1_musescore))
         g.add((a1_musescore, PROV.generated, e1_musescore))
+        # First file derived from facsimile image(s)
+        for tgt in facsimile_targets:
+            img_node = URIRef(tgt) if "://" in tgt else URIRef(ELAUTE_DATA + f"resources/{_clean_uri(tgt)}")
+            g.add((img_node, RDF.type, PROV.Entity))
+            g.add((e1_musescore, PROV.wasDerivedFrom, img_node))
         # Pipeline Step 1.5 (MuseScore path): Verovio conversion → converted MEI from MusicXML
         a1_5_vero = URIRef(ELAUTE_DATA + f"activities/{file_id}_verovio_1")
         # Use a specific activity type if available in vocab; otherwise this still creates a URI

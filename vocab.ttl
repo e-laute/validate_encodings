@@ -2,6 +2,10 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
+elautev:hasFacsimile a rdf:Property ;
+elautev:hasFacsimile rdfs:label "Has Facsimile" ;
+elautev:hasFacsimile rdfs:comment "Links a content item to a facsimile image resource." .
+
 elautev:notationType a rdf:Property ;
 elautev:notationType rdfs:label "Notation Type" .
 elautev:notationType rdfs:comment "Either CMN, ILT, FLT, GLT" .
