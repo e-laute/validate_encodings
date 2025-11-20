@@ -2,7 +2,9 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-elautev:notationType
+elautev:notationType a rdf:Property ;
+elautev:notationType rdfs:label "Notation Type" .
+elautev:notationType rdfs:comment "Either CMN, ILT, FLT, GLT" .
 
 elautev:meiEncodingActivity rdfs:subClassOf prov:Activity .
 

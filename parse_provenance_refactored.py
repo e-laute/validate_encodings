@@ -312,10 +312,12 @@ def build_graph_from_head(head: ET.Element, file_path: Path) -> Graph:
         e1 = URIRef(ELAUTE_DATA + f"files/{file_id}_generated_ft3")
         g.add((e1, RDF.type, PROV.Entity))
         g.add((e1, PROV.wasGeneratedBy, a1))
+        g.add((a1, PROV.generated, e1))
         # Pipeline Step 1.5: Luteconv conversion → converted MEI from FT3
         a1_5 = URIRef(ELAUTE_DATA + f"activities/{file_id}_luteconv_1")
         g.add((a1_5, RDF.type, ELAUTE.luteconvConvertingActivity))
         g.add((a1_5, PROV.used, e1))
+        g.add((e1, PROV.wasUsedBy, a1_5))
         # Associate software agent with version if available
         luteconv_details = _extract_app_details(head, "luteconv")
         luteconv_agent = URIRef(ELAUTE_DATA + "software/luteconv")
@@ -366,6 +368,7 @@ def build_graph_from_head(head: ET.Element, file_path: Path) -> Graph:
         e1 = URIRef(ELAUTE_DATA + f"files/{file_id}_generated_musescorexml")
         g.add((e1, RDF.type, PROV.Entity))
         g.add((e1, PROV.wasGeneratedBy, a1))
+        g.add((a1, PROV.generated, e1))
         # Pipeline Step 1.5 (MuseScore path): Verovio conversion → converted MEI from MusicXML
         a1_5_vero = URIRef(ELAUTE_DATA + f"activities/{file_id}_verovio_1")
         # Use a specific activity type if available in vocab; otherwise this still creates a URI
@@ -374,6 +377,7 @@ def build_graph_from_head(head: ET.Element, file_path: Path) -> Graph:
         else:
             g.add((a1_5_vero, RDF.type, ELAUTE.convertingActivity))
         g.add((a1_5_vero, PROV.used, e1))
+        g.add((e1, PROV.wasUsedBy, a1_5_vero))
         verovio_details = _extract_app_details(head, "verovio")
         verovio_agent = URIRef(ELAUTE_DATA + "software/verovio")
         g.add((verovio_agent, RDF.type, PROV.SoftwareAgent))
@@ -451,9 +455,11 @@ def build_graph_from_head(head: ET.Element, file_path: Path) -> Graph:
         a3 = URIRef(ELAUTE_DATA + f"activities/{file_id}_derivative_1")
         g.add((a3, RDF.type, ELAUTE.derivativeGeneratingActivity))
         g.add((a3, PROV.used, file_node))
+        g.add((file_node, PROV.wasUsedBy, a3))
         e2 = URIRef(ELAUTE_DATA + f"files/{file_id}_{edition_kind}_ILT")
         g.add((e2, RDF.type, PROV.Entity))
         g.add((e2, PROV.wasGeneratedBy, a3))
+        g.add((a3, PROV.generated, e2))
         g.add((e2, PROV.wasDerivedFrom, file_node))
         g.add((e2, ELAUTE.notationType, Literal("ILT")))
 

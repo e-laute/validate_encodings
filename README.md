@@ -12,8 +12,7 @@ Abtab notehead Converting: Tablature to notehead transcription (missing)
 
 Editing
 Musescore Editing: Sources are transcribed and edited in CMN in Musescore (musescoreEditor)
-CMN Editing: Correction of the abtab polyphonic transcription (meiEditor)
-Tablature Editing: Tablature editing in mei-friend (meiEditor)
+MEI Editing: Editing of MEI in mei-friend (meiEditor)
 
 Transcribing
 Abtab polyphonic Transcribing: Tablature to polyhonic transcription (missing)
