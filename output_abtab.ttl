@@ -4,6 +4,8 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<https://e-laute.info/data/contentitems/D-Mbs_Mus.ms._1512_n006> elautev:hasFacsimile <https://api.digitale-sammlungen.de/iiif/image/v2/bsb00104652_00016/full/full/0/default.jpg> .
+
 <https://e-laute.info/data/activities/d-mbs_musms_1512_n006_3v_enc_dipl_cmn_abtab_notehead_1> a elautev:abtabNoteheadTranscribingActivity ;
     prov:endedAtTime "2025-06-25"^^xsd:date ;
     prov:qualifiedAssociation [ a prov:Association ;
@@ -15,10 +17,10 @@
 <https://e-laute.info/data/activities/d-mbs_musms_1512_n006_3v_enc_dipl_cmn_typesetting_1> a elautev:fronimoTypesettingActivity ;
     prov:generated <https://e-laute.info/data/files/d-mbs_musms_1512_n006_3v_enc_dipl_cmn_generated_ft3> ;
     prov:qualifiedAssociation [ a prov:Association ;
-            prov:agent <https://e-laute.info/data/projectstaff/11> ;
+            prov:agent <https://e-laute.info/data/projectstaff/20> ;
             prov:hadRole elautev:fronimoEditor ],
         [ a prov:Association ;
-            prov:agent <https://e-laute.info/data/projectstaff/20> ;
+            prov:agent <https://e-laute.info/data/projectstaff/11> ;
             prov:hadRole elautev:fronimoEditor ],
         [ a prov:Association ;
             prov:agent <https://e-laute.info/data/projectstaff/24> ;
@@ -41,6 +43,8 @@
         foaf:Person ;
     foaf:familyName "Jaklin" ;
     foaf:givenName "Julia" .
+
+<https://api.digitale-sammlungen.de/iiif/image/v2/bsb00104652_00016/full/full/0/default.jpg> a prov:Entity .
 
 <https://e-laute.info/data/activities/d-mbs_musms_1512_n006_3v_enc_dipl_cmn_derivative_1> a elautev:derivativeGeneratingActivity ;
     prov:generated <https://e-laute.info/data/files/d-mbs_musms_1512_n006_3v_enc_dipl_cmn_dipl_ILT> ;
@@ -84,15 +88,16 @@
     elautev:notationType "CMN" .
 
 <https://e-laute.info/data/files/d-mbs_musms_1512_n006_3v_enc_dipl_cmn_generated_ft3> a prov:Entity ;
+    prov:wasDerivedFrom <https://api.digitale-sammlungen.de/iiif/image/v2/bsb00104652_00016/full/full/0/default.jpg> ;
     prov:wasGeneratedBy <https://e-laute.info/data/activities/d-mbs_musms_1512_n006_3v_enc_dipl_cmn_typesetting_1> ;
     prov:wasUsedBy <https://e-laute.info/data/activities/d-mbs_musms_1512_n006_3v_enc_dipl_cmn_luteconv_1> .
 
 <https://e-laute.info/data/files/d-mbs_musms_1512_n006_3v_enc_dipl_cmn> a prov:Entity ;
     prov:qualifiedAttribution [ a prov:Attribution ;
-            prov:agent <https://e-laute.info/data/projectstaff/15> ;
+            prov:agent <https://e-laute.info/data/projectstaff/10> ;
             prov:hadRole elautev:metadataContact ],
         [ a prov:Attribution ;
-            prov:agent <https://e-laute.info/data/projectstaff/10> ;
+            prov:agent <https://e-laute.info/data/projectstaff/15> ;
             prov:hadRole elautev:metadataContact ] ;
     prov:wasDerivedFrom <https://e-laute.info/data/files/d-mbs_musms_1512_n006_3v_enc_dipl_cmn_converted_mei> ;
     prov:wasGeneratedBy <https://e-laute.info/data/activities/d-mbs_musms_1512_n006_3v_enc_dipl_cmn_mei_editing_1> ;
