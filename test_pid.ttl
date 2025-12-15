@@ -1,0 +1,43 @@
+@prefix elautev: <https://e-laute.info/vocab#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+
+<https://e-laute.info/data/files/Jud_1523-2_n25> a prov:Entity ;
+    prov:qualifiedAttribution [ a prov:Attribution ;
+            prov:agent <https://e-laute.info/data/person/projectstaff-15> ;
+            prov:hadRole elautev:metadataContact ],
+        [ a prov:Attribution ;
+            prov:agent <https://e-laute.info/data/person/projectstaff-10> ;
+            prov:hadRole elautev:metadataContact ] ;
+    prov:wasGeneratedBy <https://e-laute.info/data/activities/Jud_1523-2_n25> .
+
+<https://e-laute.info/data/activities/Jud_1523-2_n25> a elautev:meiEncodingActivity ;
+    prov:qualifiedAssociation [ a prov:Association ;
+            prov:agent <https://e-laute.info/data/person/projectstaff-11> ;
+            prov:hadRole elautev:meiEditor ],
+        [ a prov:Association ;
+            prov:agent <https://e-laute.info/data/person/projectstaff-16> ;
+            prov:hadRole elautev:meiEditor ] ;
+    prov:wasAssociatedWith <https://e-laute.info/data/person/projectstaff-11>,
+        <https://e-laute.info/data/person/projectstaff-16> .
+
+<https://e-laute.info/data/person/projectstaff-10> a prov:Agent,
+        foaf:Person ;
+    foaf:familyName "Kyriazis" ;
+    foaf:givenName "Ilias" .
+
+<https://e-laute.info/data/person/projectstaff-15> a prov:Agent,
+        foaf:Person ;
+    foaf:familyName "Jaklin" ;
+    foaf:givenName "Julia" .
+
+<https://e-laute.info/data/person/projectstaff-11> a prov:Agent,
+        foaf:Person ;
+    foaf:familyName "Janjuš" ;
+    foaf:givenName "Olja" .
+
+<https://e-laute.info/data/person/projectstaff-16> a prov:Agent,
+        foaf:Person ;
+    foaf:familyName "Burghoff" ;
+    foaf:givenName "Henning" .
+
